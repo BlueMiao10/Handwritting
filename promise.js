@@ -14,7 +14,7 @@ class promise {
     })
   }
 
-  //当失败时，我们调用reject时，把他变成了异步的?，并且改变状态，执行fail()这个函数
+  //当失败时，我们调用reject时，把他变成了异步的，并且改变状态，执行fail()这个函数
   reject(reason) {
     setTimeout(() => {
       this.state = 'rejected'
