@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>节流自动保存文件</title>
+</head>
+<body>
+<label for="box"></label><textarea id="box" cols="30" rows="10"></textarea>
+<p>保存<span id="count">0</span>次</p>
+
+<script>
+  const $ = s => document.querySelector(s)
+
+  let count = 0
+  save = throttle(save, 1000 * 3)
+  $('#box').addEventListener('input', function () {
+    save()
+  })
+
+  function save() {
+    $('#count').innerText = ++count
+  }
+
+  function throttle(fn, gapTime) {
+    let nowTime = null
+    let lastTime = null
+    return function () {
+      nowTime = Date.now()
+      if (!lastTime || (nowTime - lastTime > gapTime)) {
+        fn()
+        lastTime = nowTime
+      }
+    }
+  }
+
+</script>
+</body>
+</html>

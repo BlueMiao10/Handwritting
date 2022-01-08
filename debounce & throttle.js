@@ -19,7 +19,7 @@ function throttle(fn, gapTime) {
     nowTime = Date.now()
     if (!lastTime || (nowTime - LastTime > gapTime)) {
       fn()
-      nowTime = lastTime
+      lastTime = nowTime
     }
   }
 }
